@@ -1,0 +1,41 @@
+#App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: .2rem;
+  background-color: rgb(76, 95, 95);
+  color:black;
+}
+
+.welcome {
+  align-items: center;
+  border-bottom: 5px black solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: .5rem;
+  padding-bottom: .5rem;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.on {
+  color: #000;
+}
+
+.off {
+  color: #ccc;
+}
+
+#1 {
+  border-color: black;
+  display: flex;
+  flex-direction: row;
+  float: left;
+}
