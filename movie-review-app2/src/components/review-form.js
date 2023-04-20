@@ -5,6 +5,13 @@
 import React from 'react';
 //import button and form from react bootstrap to build out the review form
 import {Button, Form} from 'react-bootstrap';
+import ReviewList from './review-list';
+
+//create variable for the save review button
+// const saveReview = document.getElementsByClassName('save')
+// console.log(saveReview);
+// //create variable for the form
+// const formForReview = document.getElementById('userReview')
 
 export default class ReviewForm extends React.Component{
   constructor(props){
@@ -18,10 +25,12 @@ export default class ReviewForm extends React.Component{
       this.updateReviewState = props.updateReviewState;
       // todo: update functions to arrow functions, don't need to bind
       this.submitReview = this.submitReview.bind(this);
-      this.handleChange = this.handleChange.bind(this);
+      //this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount = () => {};
 
+  //creating the function to be used with the onclick method
 
   resetReview() {
     this.setState({
@@ -30,38 +39,45 @@ export default class ReviewForm extends React.Component{
   }
 
   //need to figure out how to submit the review when button is clicked
-  submitReview() {
-    const reviews = [];
-    let theReview = this.props.value;
-    reviews.push(theReview);
-    console.log(reviews);
+  submitReview(event) {
+    this.setState({userReview: event.target.value})
+    this.resetReview();
+
   }
 
 
-  // I think this should be onChange, parent gets handleChange
-  handleChange(e) {
-    let target = e.target;
-    let name = target.name;
-    let value = target.value;
-    this.setState({
-      [name]: value
-    });
-  }
+  // // I think this should be onChange, parent gets handleChange
+  // handleChange(e) {
+  //   let target = e.target;
+  //   let name = target.name;
+  //   let value = target.value;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // }
 
   render() {
   
     return (
-      <Form className="reviewForm" onSubmit={this.submitReview}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label></Form.Label>
-          <Form.Control as="textarea" id="userReview" placeholder='Add Your Review Here' rows={3} value={this.userReview}/>
-        </Form.Group>
+      <div>
+      <Form className="reviewForm">
+        <div className="form-group container mb-3" controlId="exampleForm.ControlTextarea1">
+         <label>Leave a Comment:</label>
+          <input type='text' className='form-control' placeholder='Add Your Review Here' defaultValue={this.state.userReview} onChange={this.submitReview}/>
+          
+
+          </div>
+      
         <div className="d-grid gap-2">
-          <Button id= 'reviewButton' className='btn btn-primary' variant="primary" active size="lg" onClick={this.submitReview}>Save Review</Button>
+          <Button  type='submit' className='save btn btn-primary' variant="primary" >Save Review</Button>
         </div>
+       
         <input type='hidden' name='movieId' id='movieId' value={this.id}/>
         <input type='hidden' id='showMovieId' placeholder={this.id}/>
       </Form>
+      </div>
     )
   }
 }
+
+console.log(Array)

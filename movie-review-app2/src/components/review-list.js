@@ -13,6 +13,8 @@ export default class ReviewList extends React.Component {
       this.state = {reviews: new Array()};
   }
 
+  //console log reviews to make sure that new array was created
+  
   onFormSubmit(formState) {
     const reviews = this.state.reviews.slice();
     reviews.push(formState);
@@ -35,7 +37,8 @@ export default class ReviewList extends React.Component {
     )
   }
 }
-
+console.log(ReviewForm)
+console.log(Array);
 
 // import React from 'react'
 // import ReviewForm from './review-form';
