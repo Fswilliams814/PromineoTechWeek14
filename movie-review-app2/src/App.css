@@ -39,3 +39,60 @@ button {
   flex-direction: row;
   float: left;
 }
+
+.parent1 {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+.child1 {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  padding-top: 2rem;
+  vertical-align: middle;
+  height: 400px;
+  
+}
+
+.parent2 {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+}
+.child2 {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  padding-top: 2rem;
+  vertical-align: middle;
+  height: 400px;
+ 
+}
+
+.parent3 {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: 2rem 2rem;
+  text-align: center;
+  
+}
+.child3 {
+  display: inline-block;
+  border: 1px solid red;
+  padding: 1rem 1rem;
+  padding-top: 2rem;
+  vertical-align: middle;
+  height: 400px;
+  
+}
+
+#rating {
+  width: 100px;
+}
+
+#cardFooter {
+  float: inline-end;
+}

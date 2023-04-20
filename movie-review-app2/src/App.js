@@ -5,7 +5,7 @@ function App() {
   return (
     <div id='App'>
       <header className="welcome">
-        <h1>Welcome!</h1>
+        <h1>ThrowBack Movies</h1>
         <br />
         <h2>Have you seen the movie? Add your review.</h2>
       </header>

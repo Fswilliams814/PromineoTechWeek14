@@ -3,7 +3,9 @@
 // a container inside of a Movie that houses Review components
 
 import React from 'react'
-import ReviewForm from './ReviewForm';
+import ReviewForm from './review-form';
+import { ErrorBoundary } from 'react-error-boundary';
+
 
 export default class ReviewList extends React.Component {
   constructor(props) {
@@ -21,15 +23,20 @@ export default class ReviewList extends React.Component {
 
   render() {
     return (
-      <div className='container'>
-        {this.props.reviews.map(function(review, index) {
+     
+      <div className='form'>
+         
+        {this.state.reviews.map(function(review, index) {
           return <div key={index}> {review.reviewInfo}</div>
         })}
+       
         <ReviewForm onSubmit={(formState) => this.onFormSubmit(formState)} />
       </div>
     )
   }
 }
+
+
 // import React from 'react'
 // import ReviewForm from './review-form';
 

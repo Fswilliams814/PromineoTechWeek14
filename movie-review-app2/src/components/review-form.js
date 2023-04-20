@@ -3,6 +3,7 @@
 // todo: functioning change state, review pushed to array
 
 import React from 'react';
+//import button and form from react bootstrap to build out the review form
 import {Button, Form} from 'react-bootstrap';
 
 export default class ReviewForm extends React.Component{
@@ -11,13 +12,16 @@ export default class ReviewForm extends React.Component{
       this.state = {
         userReview: '',
       }
-      // this.id = props.id;
-      // this.userReview = props.userReview;
-      // this.updateReviewState = props.updateReviewState;
+     
+      this.id = props.id;
+      this.userReview = props.userReview;
+      this.updateReviewState = props.updateReviewState;
       // todo: update functions to arrow functions, don't need to bind
       this.submitReview = this.submitReview.bind(this);
       this.handleChange = this.handleChange.bind(this);
   }
+
+
 
   resetReview() {
     this.setState({
@@ -25,10 +29,14 @@ export default class ReviewForm extends React.Component{
     });
   }
 
+  //need to figure out how to submit the review when button is clicked
   submitReview() {
-    this.props.onFormSubmit(this.state);
-    this.resetReview();
+    const reviews = [];
+    let theReview = this.props.value;
+    reviews.push(theReview);
+    console.log(reviews);
   }
+
 
   // I think this should be onChange, parent gets handleChange
   handleChange(e) {
@@ -41,14 +49,15 @@ export default class ReviewForm extends React.Component{
   }
 
   render() {
+  
     return (
-      <Form className="reviewForm">
+      <Form className="reviewForm" onSubmit={this.submitReview}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label></Form.Label>
           <Form.Control as="textarea" id="userReview" placeholder='Add Your Review Here' rows={3} value={this.userReview}/>
         </Form.Group>
         <div className="d-grid gap-2">
-          <Button variant="primary" active size="lg" onClick={this.submitReview}>Save Review</Button>
+          <Button id= 'reviewButton' className='btn btn-primary' variant="primary" active size="lg" onClick={this.submitReview}>Save Review</Button>
         </div>
         <input type='hidden' name='movieId' id='movieId' value={this.id}/>
         <input type='hidden' id='showMovieId' placeholder={this.id}/>
