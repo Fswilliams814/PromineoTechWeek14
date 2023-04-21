@@ -11,7 +11,7 @@ import ReviewList from './review-list';
 // const saveReview = document.getElementsByClassName('save')
 // console.log(saveReview);
 // //create variable for the form
-// const formForReview = document.getElementById('userReview')
+//const formForReview = document.getElementById('userReview')
 
 export default class ReviewForm extends React.Component{
   constructor(props){
@@ -19,18 +19,13 @@ export default class ReviewForm extends React.Component{
       this.state = {
         userReview: '',
       }
-     
-      this.id = props.id;
-      this.userReview = props.userReview;
-      this.updateReviewState = props.updateReviewState;
+      // this.id = props.id;
+      // this.userReview = props.userReview;
+      // this.updateReviewState = props.updateReviewState;
       // todo: update functions to arrow functions, don't need to bind
       this.submitReview = this.submitReview.bind(this);
-      //this.handleChange = this.handleChange.bind(this);
+      this.handleChange = this.handleChange.bind(this);
   }
-
-  componentDidMount = () => {};
-
-  //creating the function to be used with the onclick method
 
   resetReview() {
     this.setState({
@@ -38,46 +33,109 @@ export default class ReviewForm extends React.Component{
     });
   }
 
-  //need to figure out how to submit the review when button is clicked
-  submitReview(event) {
-    this.setState({userReview: event.target.value})
+  submitReview() {
+    this.props.onSubmit(this.state);
     this.resetReview();
-
+    return false;
   }
 
-
-  // // I think this should be onChange, parent gets handleChange
-  // handleChange(e) {
-  //   let target = e.target;
-  //   let name = target.name;
-  //   let value = target.value;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // }
+  handleChange(e) {
+    let target = e.target;
+    let name = target.name;
+    let value = target.value;
+    this.setState({
+      [name]: value
+    });
+    console.log({value})
+  }
 
   render() {
-  
     return (
-      <div>
-      <Form className="reviewForm">
-        <div className="form-group container mb-3" controlId="exampleForm.ControlTextarea1">
-         <label>Leave a Comment:</label>
-          <input type='text' className='form-control' placeholder='Add Your Review Here' defaultValue={this.state.userReview} onChange={this.submitReview}/>
-          
-
-          </div>
-      
+      <Form className="reviewForm" onChange={this.handleChange}>
+          <div className="form-group container mb-3" controlid="exampleForm.ControlTextarea1">
+          <label>Leave a Comment:</label>
+          <Form.Control type='text' className='form-control' placeholder='Add Your Review Here' defaultValue={this.state.userReview} as="textarea" id="userReview" rows={3} value={this.userReview}/>
+       </div>
         <div className="d-grid gap-2">
-          <Button  type='submit' className='save btn btn-primary' variant="primary" >Save Review</Button>
+          <Button variant="primary" active size="lg" onClick={this.submitReview}>Save Review</Button>
         </div>
-       
         <input type='hidden' name='movieId' id='movieId' value={this.id}/>
         <input type='hidden' id='showMovieId' placeholder={this.id}/>
       </Form>
-      </div>
     )
   }
 }
 
-console.log(Array)
+
+// export default class ReviewForm extends React.Component{
+//   constructor(props){
+//     super(props);
+//     console.log("current props:", this.props)
+//       this.state = {
+//         userReview: "",
+//       }
+     
+//       // this.id = props.id;
+//       // this.userReview = props.userReview;
+//       // this.updateReviewState = props.updateReviewState;
+//       // todo: update functions to arrow functions, don't need to bind
+//       this.submitReview = this.submitReview.bind(this);
+//       this.handleChange = this.handleChange.bind(this);
+//   }
+
+//   componentDidMount = () => {
+//     console.log("it is working")
+//   };
+
+//   //creating the function to be used with the onclick method
+
+//   resetReview() {
+//     this.setState({
+//       userReview: '',
+//     });
+//   }
+
+//   //need to figure out how to submit the review when button is clicked
+//   submitReview() {
+//    this.props.onsubmit(this.state);
+   
+//    this.resetReview();
+//     return false;
+   
+
+//   }
+
+
+//   // I think this should be onChange, parent gets handleChange
+//   handleChange(event) {
+//     console.log(event)
+//     this.setState({
+//       userReview: this.props.userReview
+//     });
+    
+//   }
+
+//   render() {
+  
+//     return (
+//       <div>
+//       <Form className="reviewForm" onChange={this.handleChange}>
+//         <div className="form-group container mb-3" controlid="exampleForm.ControlTextarea1">
+//          <label>Leave a Comment:</label>
+//           <input type='text' className='form-control' placeholder='Add Your Review Here' defaultValue={this.state.userReview} />
+          
+
+//           </div>
+      
+//         <div className="d-grid gap-2">
+//           <Button  type='submit' className='save btn btn-primary' variant="primary" onChange={this.submitReview}>Save Review</Button>
+//         </div>
+       
+//         <input type='hidden' name='movieId' id='movieId' value={this.id}/>
+//         <input type='hidden' id='showMovieId' placeholder={this.id}/>
+//       </Form>
+//       </div>
+//     )
+//   }
+// }
+
